@@ -220,3 +220,7 @@ metrics_default_threshold:
     - metric: 'org_contributor_count_year'
       repo_threshold: 2000
       multiple_threshold: 3000
+  activity:
+    - metric: 'activity_quarterly_contribution'
+      repo_threshold: 100
+      multiple_threshold: 300

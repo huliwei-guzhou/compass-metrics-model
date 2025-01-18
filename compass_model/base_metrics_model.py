@@ -90,6 +90,7 @@ from compass_metrics.pr_metrics import (code_review_count,
                                         close_pr_ratio_year,
                                         code_review_count_year
                                         )
+from compass_metrics.activity import (activity_quarterly_contribution)
 from typing import Dict, Any
 
 logger = logging.getLogger(__name__)
@@ -493,6 +494,9 @@ class BaseMetricsModel:
             "types_of_contributions": lambda: types_of_contributions(self.client, self.contributors_enriched_index, date, repo_list),
             "contributor_count_year": lambda: contributor_count_year(self.client, self.contributors_index, date, repo_list),
             "org_contributor_count_year": lambda: org_contributor_count_year(self.client, self.contributors_index, date, repo_list),
+
+            # activity
+            "activity_quarterly_contribution": lambda: activity_quarterly_contribution(self.client, self.contributors_index, repo_list, date),
         }
         metrics = {}
         for metric_field in self.metrics_weights_thresholds.keys():
